@@ -1,6 +1,7 @@
 #terraform
 /.terraform/*
 *.terraform/
+variables.auto.tfvars
 
 # dependencies
 /node_modules
