@@ -26,7 +26,7 @@ resource "aws_appsync_datasource" "class" {
   type             = "AMAZON_DYNAMODB"
 
   dynamodb_config {
-    table_name = aws_dynamodb_table.application.name
+    table_name = aws_dynamodb_table.dojo.name
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_appsync_resolver" "listClasses" {
   api_id            = aws_appsync_graphql_api.main.id
   field             = "listApplications"
   type              = "Query"
-  data_source       = aws_appsync_datasource.application.name
+  data_source       = aws_appsync_datasource.class.name
   request_template  = "${file("../resolvers/Query.listClasses.req.vtl")}"
   response_template = "${file("../resolvers/Query.listClasses.res.vtl")}"
 }
@@ -47,7 +47,7 @@ resource "aws_appsync_resolver" "createClass" {
   api_id            = aws_appsync_graphql_api.main.id
   field             = "createWorker"
   type              = "Mutation"
-  data_source       = aws_appsync_datasource.application.name
+  data_source       = aws_appsync_datasource.class.name
   request_template  = "${file("../resolvers/Mutation.createClasses.req.vtl")}"
   response_template = "${file("../resolvers/Mutation.createClasses.res.vtl")}"
 }
@@ -56,7 +56,7 @@ resource "aws_appsync_resolver" "updateClass" {
   api_id            = aws_appsync_graphql_api.main.id
   field             = "updateWorker"
   type              = "Mutation"
-  data_source       = aws_appsync_datasource.application.name
+  data_source       = aws_appsync_datasource.class.name
   request_template  = "${file("../resolvers/Mutation.updateClasses.req.vtl")}"
   response_template = "${file("../resolvers/Mutation.updateClasses.res.vtl")}"
 }
@@ -65,7 +65,7 @@ resource "aws_appsync_resolver" "deleteClass" {
   api_id            = aws_appsync_graphql_api.main.id
   field             = "deleteWorker"
   type              = "Mutation"
-  data_source       = aws_appsync_datasource.application.name
+  data_source       = aws_appsync_datasource.class.name
   request_template  = "${file("../resolvers/Mutation.deleteClasses.req.vtl")}"
   response_template = "${file("../resolvers/Mutation.deleteClasses.res.vtl")}"
 }
