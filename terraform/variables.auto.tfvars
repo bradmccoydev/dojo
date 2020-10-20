@@ -1,3 +1,4 @@
+aws_region = "us-west-2"
 application_name = "dojo"
 application_s3_bucket = "dojo.bradmccoy.io"
 ui_s3_bucket = "dojo.bradmccoy.io"

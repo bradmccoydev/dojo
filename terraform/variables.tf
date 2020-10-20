@@ -1,3 +1,7 @@
+variable "aws_region" {
+  description = "AWS Region"
+}
+
 variable "application_name" {
   description = "Aws Account ID"
 }
