@@ -1,0 +1,88 @@
+type Class {
+  id: ID!
+  name: String!
+  phone: AWSPhone!
+  role: String
+}
+
+############################################
+# Aggregate type for supporting pagination #
+############################################
+
+type ModelClassConnection {
+  items: [Worker]
+  nextToken: String
+}
+
+#################################################
+# Input Types for mutating and filtering models #
+#################################################
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelClassFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  phone: ModelStringFilterInput
+  role: ModelStringFilterInput
+  and: [ModelClassFilterInput]
+  or: [ModelClassFilterInput]
+  not: ModelClassFilterInput
+}
+
+input CreateClassInput {
+  id: ID
+  name: String!
+  phone: AWSPhone!
+  role: String
+}
+
+input UpdateClassInput {
+  id: ID!
+  name: String
+  phone: AWSPhone
+  role: String
+}
+
+input DeleteClassInput {
+  id: ID!
+}
+
+################################
+# Schema behavior declarations #
+################################
+
+type Query {
+  listClasses(filter: ModelClassFilterInput, limit: Int, nextToken: String): ModelClassConnection
+}
+
+type Mutation {
+  createClass(input: CreateClassInput!): Worker
+  updateClass(input: UpdateClassInput!): Worker
+  deleteClass(input: DeleteClassInput!): Worker
+  notifyClass(id: ID!): NotifyResult
+}
