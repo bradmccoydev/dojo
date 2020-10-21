@@ -3,9 +3,34 @@ import { UserConsumer } from './../context';
 import { NavMenu } from './../components/NavMenu';
 import DesktopImage from '.././images/Background.jpg'
 import MobileImage from '.././images/Background.jpg'
-import logo from '.././images/dojo.svg'
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const MainImage = window.innerWidth >= 650 ? DesktopImage : MobileImage;
+
+const classes = {
+  root: {
+    flexGrow: 1,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.1)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  }
+};
+
+const bull = <span className={classes.bullet}>•</span>;
 
 export class Home extends Component {
   static displayName = Home.name; 
@@ -20,17 +45,62 @@ export class Home extends Component {
           ? <div></div>
           : <NavMenu/>}
 
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+      <Grid container className={classes.root} spacing={2}>
+          <Card className={classes.root} variant="outlined">
+            <CardContent>
+              <Typography className={classes.title} color="textSecondary" gutterBottom>
+                Next Class
+              </Typography>
+              <Typography variant="h5" component="h2">
+                GraphQL
+              </Typography>
+              <br />
+              <Typography variant="body2" component="p">
+                An introduction to AWS App Sync and GraphQL
+                <br />
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Set Reminder</Button>
+            </CardActions>
+          </Card>
+      </Grid>
+            
+
                 <p>
-                  <code>Welcome To Dojo</code>
+                <code>Welcome To Dojo</code>
                 </p>
                 <p>
                   <code>Dojo is a community enterprise DevOps Dojo designed to accelerate organizations through collabration and learning</code>
                 </p>
-              </header>
-            </div>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
         </div>
       )}               
       </UserConsumer> 
