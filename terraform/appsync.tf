@@ -12,7 +12,7 @@ resource "aws_appsync_graphql_api" "main" {
     default_action = "ALLOW"
   }
 
-  schema = "${file("../schema.graphql")}"
+  schema = file("../schema.graphql")
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ resource "aws_appsync_resolver" "listClasses" {
   field             = "listApplications"
   type              = "Query"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = "${file("../resolvers/Query.listClasses.req.vtl")}"
-  response_template = "${file("../resolvers/Query.listClasses.res.vtl")}"
+  request_template  = file("./../resolvers/Query.listClasses.req.vtl")
+  response_template = file("./../resolvers/Query.listClasses.res.vtl")
 }
 
 resource "aws_appsync_resolver" "createClass" {
@@ -48,8 +48,8 @@ resource "aws_appsync_resolver" "createClass" {
   field             = "createWorker"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = "${file("../resolvers/Mutation.createClasses.req.vtl")}"
-  response_template = "${file("../resolvers/Mutation.createClasses.res.vtl")}"
+  request_template  = file("./../resolvers/Mutation.createClasses.req.vtl")
+  response_template = file("./../resolvers/Mutation.createClasses.res.vtl")
 }
 
 resource "aws_appsync_resolver" "updateClass" {
@@ -57,8 +57,8 @@ resource "aws_appsync_resolver" "updateClass" {
   field             = "updateWorker"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = "${file("../resolvers/Mutation.updateClasses.req.vtl")}"
-  response_template = "${file("../resolvers/Mutation.updateClasses.res.vtl")}"
+  request_template  = file("./../resolvers/Mutation.updateClasses.req.vtl")
+  response_template = file("./../resolvers/Mutation.updateClasses.res.vtl")
 }
 
 resource "aws_appsync_resolver" "deleteClass" {
@@ -66,6 +66,6 @@ resource "aws_appsync_resolver" "deleteClass" {
   field             = "deleteWorker"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = "${file("../resolvers/Mutation.deleteClasses.req.vtl")}"
-  response_template = "${file("../resolvers/Mutation.deleteClasses.res.vtl")}"
+  request_template  = file("./../resolvers/Mutation.deleteClasses.req.vtl")
+  response_template = file("./../resolvers/Mutation.deleteClasses.res.vtl")
 }

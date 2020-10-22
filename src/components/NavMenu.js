@@ -56,66 +56,21 @@ export class NavMenu extends Component {
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar className="nav-bar">
           <Box display='flex' flexGrow={1}>
-            <IconButton
-              style={{gutterBottom: true}}
-              color="inherit"
-              aria-label="Menu"
-              component={Link} to="/">                                  
-              <img
-                style={classes.iconStyles}
-                src={Logo}
-                alt="Dojo"
-                width="30"
-                height="30" />                   
-            </IconButton>
+            DOJO   道場
           </Box>
           <IconButton
             style={{gutterBottom: true}}
             color="inherit"
             aria-label="Menu"
             component={Link} to="/learn?showheader=true">                                  
-            <img
-              style={classes.iconStyles}
-              src={learn}
-              alt="Dojo"
-              width="30"
-              height="30" />                      
+            Train                     
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}
             color="inherit"
             aria-label="Menu"
             component={Link} to="/train/showheader=true">                                  
-            <img
-              style={classes.iconStyles}
-              src={train}
-              alt="Dojo"
-              width="30"
-              height="30" />                                    
-          </IconButton>
-          <IconButton
-            style={{gutterBottom: true}}
-            color="inherit"
-            aria-label="Menu"
-            component={Link} to="/teach/showheader=true">                                  
-            <img
-              style={classes.iconStyles}
-              src={teach}
-              alt="Dojo"
-              width="30"
-              height="30" />                
-          </IconButton>
-          <IconButton
-            style={{gutterBottom: true}}
-            color="inherit"
-            aria-label="Menu"
-            component={Link} to="/blog/showheader=true">                                  
-            <img
-              style={classes.iconStyles}
-              src={blog}
-              alt="Dojo"
-              width="30"
-              height="30" />                
+            Coach                                    
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}
