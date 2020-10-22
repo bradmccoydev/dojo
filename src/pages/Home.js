@@ -10,12 +10,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 const MainImage = window.innerWidth >= 650 ? DesktopImage : MobileImage;
 
 const classes = {
   root: {
     flexGrow: 1,
+    margin: "100px",
+    padding: "200px"
   },
   bullet: {
     display: 'inline-block',
@@ -30,7 +33,7 @@ const classes = {
   }
 };
 
-const bull = <span className={classes.bullet}>•</span>;
+
 
 export class Home extends Component {
   static displayName = Home.name; 
@@ -45,7 +48,8 @@ export class Home extends Component {
           ? <div></div>
           : <NavMenu/>}
 
-      <Grid container className={classes.root} spacing={2}>
+      <Grid container className={classes.root} >
+      <Box m={2} pt={3}>
           <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -64,6 +68,7 @@ export class Home extends Component {
               <Button size="small">Set Reminder</Button>
             </CardActions>
           </Card>
+          </Box>
       </Grid>
             
 
