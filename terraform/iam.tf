@@ -93,7 +93,7 @@ EOF
 
 resource "aws_iam_policy_attachment" "cognito_sns_role" {
   name       = "${var.application_name}-cognito-sns-role-policy"
-  roles      = ["${aws_iam_role.cognito_sns_role.name}"]
+  roles      = [aws_iam_role.cognito_sns_role.name]
   policy_arn = aws_iam_policy.cognito_sns_role.arn
 }
 

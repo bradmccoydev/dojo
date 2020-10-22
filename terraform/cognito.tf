@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_cognito_identity_pool" "main" {
-  identity_pool_name               = "${var.application_name}"
+  identity_pool_name               = var.application_name
   allow_unauthenticated_identities = false
 
   cognito_identity_providers {
@@ -27,7 +27,7 @@ resource "aws_cognito_identity_pool_roles_attachment" "main" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_cognito_user_pool" "main" {
-  name = "${var.application_name}"
+  name = var.application_name
 
   verification_message_template {
     default_email_option = "CONFIRM_WITH_CODE"
