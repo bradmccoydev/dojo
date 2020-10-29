@@ -149,3 +149,8 @@ resource "aws_iam_role_policy" "appsync" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy_attachment" "appsync" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs"
+  role       = aws_iam_role.appsync.name
+}
