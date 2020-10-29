@@ -1,88 +1,106 @@
-type Class {
-  id: ID!
-  name: String!
-  phone: AWSPhone!
-  role: String
+input CreateDojoClassInput {
+	class_name: String
+	date_time: String
 }
 
-############################################
-# Aggregate type for supporting pagination #
-############################################
-
-type ModelClassConnection {
-  items: [Worker]
-  nextToken: String
+input DeleteDojoClassInput {
+	id: String!
 }
 
-#################################################
-# Input Types for mutating and filtering models #
-#################################################
-
-input ModelStringFilterInput {
-  ne: String
-  eq: String
-  le: String
-  lt: String
-  ge: String
-  gt: String
-  contains: String
-  notContains: String
-  between: [String]
-  beginsWith: String
+type DojoClass {
+	id: String!
+	class_name: String
+	date_time: String
 }
 
-input ModelIDFilterInput {
-  ne: ID
-  eq: ID
-  le: ID
-  lt: ID
-  ge: ID
-  gt: ID
-  contains: ID
-  notContains: ID
-  between: [ID]
-  beginsWith: ID
-}
-
-input ModelClassFilterInput {
-  id: ModelIDFilterInput
-  name: ModelStringFilterInput
-  phone: ModelStringFilterInput
-  role: ModelStringFilterInput
-  and: [ModelClassFilterInput]
-  or: [ModelClassFilterInput]
-  not: ModelClassFilterInput
-}
-
-input CreateClassInput {
-  id: ID
-  name: String!
-  phone: AWSPhone!
-  role: String
-}
-
-input UpdateClassInput {
-  id: ID!
-  name: String
-  phone: AWSPhone
-  role: String
-}
-
-input DeleteClassInput {
-  id: ID!
-}
-
-################################
-# Schema behavior declarations #
-################################
-
-type Query {
-  listClasses(filter: ModelClassFilterInput, limit: Int, nextToken: String): ModelClassConnection
+type DojoClassConnection {
+	items: [DojoClass]
+	nextToken: String
 }
 
 type Mutation {
-  createClass(input: CreateClassInput!): Worker
-  updateClass(input: UpdateClassInput!): Worker
-  deleteClass(input: DeleteClassInput!): Worker
-  notifyClass(id: ID!): NotifyResult
+	createDojoClass(input: CreateDojoClassInput!): DojoClass
+	updateDojoClass(input: UpdateDojoClassInput!): DojoClass
+	deleteDojoClass(input: DeleteDojoClassInput!): DojoClass
+}
+
+type Query {
+	getDojoClass(id: String!): DojoClass
+	listDojoClasses(filter: TableDojoClassFilterInput, limit: Int, nextToken: String): DojoClassConnection
+}
+
+type Subscription {
+	onCreateDojoClass(id: String, class_name: String, date_time: String): DojoClass
+		@aws_subscribe(mutations: ["createDojoClass"])
+	onUpdateDojoClass(id: String, class_name: String, date_time: String): DojoClass
+		@aws_subscribe(mutations: ["updateDojoClass"])
+	onDeleteDojoClass(id: String, class_name: String, date_time: String): DojoClass
+		@aws_subscribe(mutations: ["deleteDojoClass"])
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableDojoClassFilterInput {
+	id: TableStringFilterInput
+	class_name: TableStringFilterInput
+	date_time: TableStringFilterInput
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateDojoClassInput {
+	id: String!
+	class_name: String
+	date_time: String
 }
