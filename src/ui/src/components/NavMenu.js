@@ -55,7 +55,11 @@ export class NavMenu extends Component {
       <div>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar className="nav-bar">
-          <Box display='flex' flexGrow={1}>
+          <Box 
+            display='flex'
+            flexGrow={1}
+            style={{ textDecoration: 'none' }}
+            component={Link} to="/home/showheader=true">
             DOJO   道場
           </Box>
           <IconButton
