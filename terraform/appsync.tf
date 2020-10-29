@@ -40,7 +40,9 @@ resource "aws_appsync_resolver" "listClasses" {
   type              = "Query"
   data_source       = aws_appsync_datasource.class.name
   request_template  = file("./../resolvers/Query.listClasses.req.vtl")
-  response_template = file("./../resolvers/Query.listClasses.res.vtl")
+  response_template = <<EOF
+  $util.toJson($ctx.result)
+  EOF
 }
 
 resource "aws_appsync_resolver" "createClass" {
@@ -49,7 +51,9 @@ resource "aws_appsync_resolver" "createClass" {
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
   request_template  = file("./../resolvers/Mutation.createClasses.req.vtl")
-  response_template = file("./../resolvers/Mutation.createClasses.res.vtl")
+  response_template = <<EOF
+  $util.toJson($ctx.result)
+  EOF
 }
 
 resource "aws_appsync_resolver" "updateClass" {
@@ -58,7 +62,9 @@ resource "aws_appsync_resolver" "updateClass" {
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
   request_template  = file("./../resolvers/Mutation.updateClasses.req.vtl")
-  response_template = file("./../resolvers/Mutation.updateClasses.res.vtl")
+  response_template = <<EOF
+  $util.toJson($ctx.result)
+  EOF
 }
 
 resource "aws_appsync_resolver" "deleteClass" {
@@ -67,5 +73,7 @@ resource "aws_appsync_resolver" "deleteClass" {
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
   request_template  = file("./../resolvers/Mutation.deleteClasses.req.vtl")
-  response_template = file("./../resolvers/Mutation.deleteClasses.res.vtl")
+  response_template = <<EOF
+  $util.toJson($ctx.result)
+  EOF
 }
