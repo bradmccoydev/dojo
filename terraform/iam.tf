@@ -97,8 +97,12 @@ resource "aws_iam_policy_attachment" "cognito_sns_role" {
   policy_arn = aws_iam_policy.cognito_sns_role.arn
 }
 
-resource "aws_iam_role" "appsync_dynamo_datasource" {
-  name = "dojo-dynamo-datasource"
+# ---------------------------------------------------------------------------------------------------------------------
+# App Sync
+# ---------------------------------------------------------------------------------------------------------------------
+
+resource "aws_iam_role" "appsync" {
+  name = "dojo-app-sync-role"
 
   assume_role_policy = <<EOF
 {
@@ -116,9 +120,9 @@ resource "aws_iam_role" "appsync_dynamo_datasource" {
 EOF
 }
 
-resource "aws_iam_role_policy" "appsync_dynamo_datasource" {
-  name = "dojo-dynamo-datasource"
-  role = aws_iam_role.appsync_dynamo_datasource.id
+resource "aws_iam_role_policy" "appsync" {
+  name = "dojo-app-sync-policy"
+  role = aws_iam_role.appsync.id
 
   policy = <<EOF
 {
@@ -144,4 +148,9 @@ resource "aws_iam_role_policy" "appsync_dynamo_datasource" {
   ]
 }
 EOF
+}
+
+resource "aws_iam_role_policy_attachment" "appsync" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs"
+  role       = aws_iam_role.appsync.name
 }
