@@ -35,8 +35,8 @@ function App() {
                 <Route exact path='/learn' component={Learn} />
                 <Route path='/learn/:showHeader' component={Learn} />
 
-                <Route exact path='/train' component={Train} />
-                <Route path='/train/:showHeader' component={Train} />
+                <Route exact path='/classes' component={Train} />
+                <Route path='/classes/:showHeader' component={Train} />
 
                 <Route exact path='/teach' component={Teach} />
                 <Route path='/teach/:showHeader' component={Teach} />

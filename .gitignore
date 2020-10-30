@@ -7,12 +7,13 @@
 node_modules
 /.pnp
 .pnp.js
+yarn.lock
 
 # testing
 /coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store

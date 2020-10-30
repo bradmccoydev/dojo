@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import ReactGoogleSlides from "react-google-slides";
 import { UserConsumer } from './../context';
 import { NavMenu } from './../components/NavMenu';
 import DesktopImage from '.././images/Background.jpg'
 import MobileImage from '.././images/Background.jpg'
-import train from '.././images/train.svg'
 
 const MainImage = window.innerWidth >= 650 ? DesktopImage : MobileImage;
 
@@ -20,10 +20,12 @@ export class Train extends Component {
           ? <div></div>
           : <NavMenu/>}
               <header className="App-header">
-                <img src={train} className="App-logo" alt="logo" />
-                <p>
-                  <code>Train</code>
-                </p>
+              <ReactGoogleSlides
+                  width={1350}
+                  height={850}
+                  slidesLink="https://docs.google.com/presentation/d/1qQPhvSUlj74yIEu2YcH1qPrVBxU_DYF8lT3vd34UwDg/edit?usp=sharing"
+                  showControls
+                />
               </header>
         </div>
       )}               

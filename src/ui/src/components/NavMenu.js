@@ -6,12 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
-import learn from '.././images/learn.svg'
-import train from '.././images/train.svg'
-import teach from '.././images/teach.svg'
 import github from '.././images/github.png'
-import blog from '.././images/blog.svg'
-import Logo from '../images/dojo.svg'
 import './NavMenu.css';
 
 const classes = makeStyles((theme) => ({
@@ -66,15 +61,8 @@ export class NavMenu extends Component {
             style={{gutterBottom: true}}
             color="inherit"
             aria-label="Menu"
-            component={Link} to="/learn?showheader=true">                                  
-            Train                     
-          </IconButton>
-          <IconButton
-            style={{gutterBottom: true}}
-            color="inherit"
-            aria-label="Menu"
-            component={Link} to="/train/showheader=true">                                  
-            Coach                                    
+            component={Link} to="/classes?showheader=true">                                  
+            Classes                     
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}

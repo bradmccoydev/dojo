@@ -1,6 +1,5 @@
 input CreateDojoClassInput {
-	class_name: String
-	date_time: String
+	id: String!
 }
 
 input DeleteDojoClassInput {
@@ -9,8 +8,12 @@ input DeleteDojoClassInput {
 
 type DojoClass {
 	id: String!
-	class_name: String
-	date_time: String
+	class: String
+	created_by: String
+	created_date: String
+	google_slide: String
+	meeting_url: String
+	scheduled_date: String
 }
 
 type DojoClassConnection {

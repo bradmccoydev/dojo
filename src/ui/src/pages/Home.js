@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { UserConsumer } from './../context';
 import { NavMenu } from './../components/NavMenu';
 import DesktopImage from '.././images/Background.jpg'
 import MobileImage from '.././images/Background.jpg'
 import { makeStyles } from '@material-ui/core/styles';
+import ReactGoogleSlides from "react-google-slides";
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -65,20 +67,16 @@ export class Home extends Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Set Reminder</Button>
+              <Button
+                size="small"
+                component={Link} to="/classes?showheader=true">
+                Attend Class
+              </Button>
             </CardActions>
           </Card>
           </Box>
       </Grid>
-            
-
-                <p>
-                <code>Welcome To Dojo</code>
-                </p>
-                <p>
-                  <code>Dojo is a community enterprise DevOps Dojo designed to accelerate organizations through collabration and learning</code>
-                </p>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br />
                 <br />
                 <br />
                 <br />
