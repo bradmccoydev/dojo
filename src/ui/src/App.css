@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-image: url(/images/Background.jpg);
   background-size: cover;
   height: 100%;
 }
@@ -30,8 +29,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.container{
-  background-image: url(/images/Background);
 }

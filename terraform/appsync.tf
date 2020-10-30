@@ -21,7 +21,7 @@ resource "aws_appsync_graphql_api" "main" {
     field_log_level          = "ERROR"
   }
 
-  schema = file("../schema.graphql")
+  schema = file("./../src/api/schema.graphql")
 }
 
 resource "aws_appsync_api_key" "key" {
@@ -35,7 +35,7 @@ resource "aws_appsync_api_key" "key" {
 resource "aws_appsync_datasource" "class" {
   name             = "DojoClass"
   api_id           = aws_appsync_graphql_api.main.id
-  service_role_arn = aws_iam_role.appsync_dynamo_datasource.arn
+  service_role_arn = aws_iam_role.appsync.arn
   type             = "AMAZON_DYNAMODB"
 
   dynamodb_config {
@@ -52,7 +52,7 @@ resource "aws_appsync_resolver" "list_classes" {
   field             = "listDojoClasses"
   type              = "Query"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = file("./../resolvers/Query.listClasses.req.vtl")
+  request_template  = file("./../src/api/resolvers/Query.listClasses.req.vtl")
   response_template = <<EOF
   $util.toJson($ctx.result)
   EOF
@@ -63,7 +63,7 @@ resource "aws_appsync_resolver" "get_class" {
   field             = "getDojoClass"
   type              = "Query"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = file("./../resolvers/Query.getDojoClass.req.vtl")
+  request_template  = file("./../src/api/resolvers/Query.getDojoClass.req.vtl")
   response_template = <<EOF
   $util.toJson($ctx.result)
   EOF
@@ -74,7 +74,7 @@ resource "aws_appsync_resolver" "create_class" {
   field             = "createDojoClass"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = file("./../resolvers/Mutation.createClass.req.vtl")
+  request_template  = file("./../src/api/resolvers/Mutation.createClass.req.vtl")
   response_template = <<EOF
   $util.toJson($ctx.result)
   EOF
@@ -85,7 +85,7 @@ resource "aws_appsync_resolver" "update_class" {
   field             = "updateDojoClass"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = file("./../resolvers/Mutation.updateClass.req.vtl")
+  request_template  = file("./../src/api/resolvers/Mutation.updateClass.req.vtl")
   response_template = <<EOF
   $util.toJson($ctx.result)
   EOF
@@ -96,7 +96,7 @@ resource "aws_appsync_resolver" "delete_class" {
   field             = "deleteDojoClass"
   type              = "Mutation"
   data_source       = aws_appsync_datasource.class.name
-  request_template  = file("./../resolvers/Mutation.deleteClass.req.vtl")
+  request_template  = file("./../src/api/resolvers/Mutation.deleteClass.req.vtl")
   response_template = <<EOF
   $util.toJson($ctx.result)
   EOF

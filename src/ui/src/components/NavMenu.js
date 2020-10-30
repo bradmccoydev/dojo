@@ -6,12 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
-import learn from '.././images/learn.svg'
-import train from '.././images/train.svg'
-import teach from '.././images/teach.svg'
 import github from '.././images/github.png'
-import blog from '.././images/blog.svg'
-import Logo from '../images/dojo.svg'
 import './NavMenu.css';
 
 const classes = makeStyles((theme) => ({
@@ -55,22 +50,19 @@ export class NavMenu extends Component {
       <div>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar className="nav-bar">
-          <Box display='flex' flexGrow={1}>
+          <Box 
+            display='flex'
+            flexGrow={1}
+            style={{ textDecoration: 'none' }}
+            component={Link} to="/home/showheader=true">
             DOJO   道場
           </Box>
           <IconButton
             style={{gutterBottom: true}}
             color="inherit"
             aria-label="Menu"
-            component={Link} to="/learn?showheader=true">                                  
-            Train                     
-          </IconButton>
-          <IconButton
-            style={{gutterBottom: true}}
-            color="inherit"
-            aria-label="Menu"
-            component={Link} to="/train/showheader=true">                                  
-            Coach                                    
+            component={Link} to="/classes?showheader=true">                                  
+            Classes                     
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}
