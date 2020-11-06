@@ -7,6 +7,10 @@ resource "aws_appsync_graphql_api" "main" {
   authentication_type = "AMAZON_COGNITO_USER_POOLS"
 
   additional_authentication_provider {
+    authentication_type = "AWS_IAM"
+  }
+
+  additional_authentication_provider {
     authentication_type = "API_KEY"
   }
 

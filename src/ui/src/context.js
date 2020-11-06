@@ -6,7 +6,7 @@ const UserContext = createContext({
   unixTime: Math.round((new Date()).getTime() / 1000),
   showHeader: 'showHeader=false',
   tabIndex: 0,
-  tab: '',
+  dojoClass: 'https://docs.google.com/presentation/d/1mZ_zWVe8Nnfhc-c02bhIPcuFQsd_0g94ThrP7cOBe_I/edit?usp=sharin',
   updateState: () => {},
 });
 
@@ -23,7 +23,7 @@ export class UserProvider extends React.Component {
     unixTime: Math.round((new Date()).getTime() / 1000),
     showHeader: 'showHeader=false',
     tabIndex: 0,
-    tab: '',
+    dojoClass: 'https://docs.google.com/presentation/d/1mZ_zWVe8Nnfhc-c02bhIPcuFQsd_0g94ThrP7cOBe_I/edit?usp=sharing',
     updateState: this.updateState,
   };
 

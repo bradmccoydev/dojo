@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { UserConsumer } from './../context';
+import { AmplifySignOut } from '@aws-amplify/ui-react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
@@ -63,6 +64,16 @@ export class NavMenu extends Component {
             aria-label="Menu"
             component={Link} to="/classes?showheader=true">                                  
             Classes                     
+          </IconButton>
+          <IconButton
+            style={{gutterBottom: true}}
+            color="inherit"
+            aria-label="Menu"
+            component={Link} to="/templates?showheader=true">                                  
+            Templates                     
+          </IconButton>
+          <IconButton>
+            <AmplifySignOut />   
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}

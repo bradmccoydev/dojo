@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { Auth } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Auth, Greetings,SignIn,ConfirmSignIn,VerifyContact,ForgotPassword } from 'aws-amplify';
 import { Amplify } from 'aws-amplify';
-import AWS from 'aws-sdk';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Home } from './../pages/Home';
 import { Blog } from './../pages/Blog';
 import { Learn } from './../pages/Learn';
 import { Train } from './../pages/Train';
-import { Teach } from './../pages/Teach';
+import { Templates } from './../pages/Templates';
 import { Feedback } from './../pages/docs/Feedback';
 import { PrivacyPolicy } from './../pages/docs/PrivacyPolicy';
 import { Copyright } from './../pages/docs/Copyright';
@@ -53,7 +52,6 @@ function App() {
     <UserProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AmplifySignOut />
           <Router history={history}>
               <Switch>
                 <Route exact path='/' component={Home} />
@@ -66,8 +64,8 @@ function App() {
                 <Route exact path='/classes' component={Train} />
                 <Route path='/classes/:showHeader' component={Train} />
 
-                <Route exact path='/teach' component={Teach} />
-                <Route path='/teach/:showHeader' component={Teach} />
+                <Route exact path='/templates' component={Templates} />
+                <Route path='/templates/:showHeader' component={Templates} />
 
                 <Route exact path='/blog' component={Blog} />
                 <Route path='/blog/:showHeader' component={Blog} />
@@ -84,4 +82,10 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, true, [
+  <Greetings />,
+  <SignIn />,
+  <ConfirmSignIn />,
+  <VerifyContact />,
+  <ForgotPassword />
+])

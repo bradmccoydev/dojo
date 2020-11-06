@@ -58,11 +58,11 @@ export class Home extends Component {
                 Next Class
               </Typography>
               <Typography variant="h5" component="h2">
-                GraphQL
+                AWS Glue
               </Typography>
               <br />
               <Typography variant="body2" component="p">
-                An introduction to AWS App Sync and GraphQL
+                An introduction to AWS Glue
                 <br />
               </Typography>
             </CardContent>
