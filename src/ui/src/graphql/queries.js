@@ -1,4 +1,4 @@
-export const listApplications =
+export const listDojoClasses =
 `query listDojoClasses {
   listDojoClasses {
     items {
@@ -15,7 +15,7 @@ export const listApplications =
 }
 `;
 
-export const GetApplication =
+export const getDojoClass =
 `query getDojoClass {
   getDojoClass {
     items {

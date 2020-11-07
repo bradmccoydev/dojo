@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {API} from 'aws-amplify';
 import ReactGoogleSlides from "react-google-slides";
 import { UserConsumer } from './../context';
 import { NavMenu } from './../components/NavMenu';
@@ -9,9 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
-import PeopleIcon from '@material-ui/icons/People';
 import WhatIsDojo from './WhatIsDojo'
 import { makeStyles } from '@material-ui/core/styles';
+import * as queries from './../graphql/queries';
+import * as mutations from './../graphql/mutations';
 
 const MainImage = window.innerWidth >= 650 ? DesktopImage : MobileImage;
 
@@ -21,32 +23,30 @@ const classes = makeStyles((theme) => ({
     },
 }));
 
-const tabs = [
-  {
-    icon: <PeopleIcon/>,
-    label: 'Introduction To GraphQL',
-    url: 'https://docs.google.com/presentation/d/1qQPhvSUlj74yIEu2YcH1qPrVBxU_DYF8lT3vd34UwDg/edit?usp=sharing'
-  },
-  {
-    icon: <PeopleIcon/>,
-    label: 'Introduction To IAM',
-    url: 'https://docs.google.com/presentation/d/17SNQvOa5nUwES3LIwYmbCjzehfhnolUh7cbSpv8S5Ck/edit?usp=sharing'
-  },
-  {
-    icon: <PeopleIcon/>,
-    label: 'Introduction To Glue',
-    url: 'https://docs.google.com/presentation/d/1mZ_zWVe8Nnfhc-c02bhIPcuFQsd_0g94ThrP7cOBe_I/edit?usp=sharing'
-  },
-];
-
 export class Train extends Component {
   static displayName = Train.name; 
+
+  state = {
+    data: [],
+    class: 'https://docs.google.com/presentation/d/1mZ_zWVe8Nnfhc-c02bhIPcuFQsd_0g94ThrP7cOBe_I/edit?usp=sharing',
+  }
+
+  componentDidMount(){
+      this.fetch()
+  }
+
+  fetch = async () => {
+      const dojoClasses = await API.graphql({ query: queries.listDojoClasses });
+      this.setState({
+          data: dojoClasses.data.listDojoClasses.items
+      });
+      console.log(dojoClasses.data.listDojoClasses.items)
+  }
 
   render() {
     return (
       <UserConsumer>
       {({ tabIndex,
-          dojoClass,
           updateState}) => (
         <div className="App" style={{backgroundImage: `url(${MainImage})` }}>
           {this.props.match.params.showHeader === "showHeader=false"
@@ -70,11 +70,11 @@ export class Train extends Component {
                     aria-label="Vertical tabs example"
                     className={classes.tabs}
                   >
-                  {tabs.map((tab, i) => 
+                  {this.state.data.map((data) =>
                   <Tab
-                  label={tab.label}
+                  label={data.class}
                   onClick={() =>
-                   updateState({ tabIndex: i})
+                   this.setState({ class: data.google_slide})
                    } />)}
                   </Tabs>
                 </Paper>
@@ -82,8 +82,8 @@ export class Train extends Component {
               <Grid item xs={10}>
                 <ReactGoogleSlides
                   width={1350}
-                  height={850}
-                  slidesLink={dojoClass}
+                  height={750}
+                  slidesLink={this.state.class}
                   showControls
                 />
               </Grid>

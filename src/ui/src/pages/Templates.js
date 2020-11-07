@@ -22,11 +22,11 @@ export class Templates extends Component {
   }
 
   fetch = async () => {
-      const applications = await API.graphql({ query: queries.listApplications });
+      const dojoClasses = await API.graphql({ query: queries.listDojoClasses });
       this.setState({
-          data: applications.data.listApplicationMetadataRegistries.items
+          data: dojoClasses.data.listDojoClasses.items
       });
-      console.log(applications.data.listApplicationMetadataRegistries.items)
+      console.log(dojoClasses.data.listDojoClasses.items)
   }
 
   render() {

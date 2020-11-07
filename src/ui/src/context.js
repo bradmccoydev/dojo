@@ -12,6 +12,7 @@ const UserContext = createContext({
 
 export class UserProvider extends React.Component {
   updateState = (key,value) => {
+    console.log('hello' + value)
     this.setState({
       [key]: value
       });
