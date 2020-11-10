@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
-import WhatIsDojo from './WhatIsDojo'
 import { makeStyles } from '@material-ui/core/styles';
 import * as queries from './../graphql/queries';
 import * as mutations from './../graphql/mutations';
@@ -23,8 +22,8 @@ const classes = makeStyles((theme) => ({
     },
 }));
 
-export class Train extends Component {
-  static displayName = Train.name; 
+export class Classes extends Component {
+  static displayName = Classes.name; 
 
   state = {
     data: [],
@@ -97,4 +96,4 @@ export class Train extends Component {
     }
     
     
-  export default Train;
+  export default Classes;

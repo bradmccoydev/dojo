@@ -62,8 +62,22 @@ export class NavMenu extends Component {
             style={{gutterBottom: true}}
             color="inherit"
             aria-label="Menu"
+            component={Link} to="/overview?showheader=true">                                  
+            Overview                     
+          </IconButton>
+          <IconButton
+            style={{gutterBottom: true}}
+            color="inherit"
+            aria-label="Menu"
             component={Link} to="/classes?showheader=true">                                  
             Classes                     
+          </IconButton>
+          <IconButton
+            style={{gutterBottom: true}}
+            color="inherit"
+            aria-label="Menu"
+            component={Link} to="/milestones?showheader=true">                                  
+            Milestones                     
           </IconButton>
           <IconButton
             style={{gutterBottom: true}}

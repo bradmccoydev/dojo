@@ -6,8 +6,9 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Home } from './../pages/Home';
 import { Blog } from './../pages/Blog';
-import { Learn } from './../pages/Learn';
-import { Train } from './../pages/Train';
+import { Overview } from './../pages/Overview';
+import { Classes } from './../pages/Classes';
+import { Milestones } from './../pages/Milestones';
 import { Templates } from './../pages/Templates';
 import { Feedback } from './../pages/docs/Feedback';
 import { PrivacyPolicy } from './../pages/docs/PrivacyPolicy';
@@ -58,11 +59,14 @@ function App() {
                 <Route exact path='/home' component={Home} />
                 <Route path='/home/:showHeader' component={Home} />
 
-                <Route exact path='/learn' component={Learn} />
-                <Route path='/learn/:showHeader' component={Learn} />
+                <Route exact path='/overview' component={Overview} />
+                <Route path='/overview/:showHeader' component={Overview} />
 
-                <Route exact path='/classes' component={Train} />
-                <Route path='/classes/:showHeader' component={Train} />
+                <Route exact path='/classes' component={Classes} />
+                <Route path='/classes/:showHeader' component={Classes} />
+
+                <Route exact path='/milestones' component={Milestones} />
+                <Route path='/milestones/:showHeader' component={Milestones} />
 
                 <Route exact path='/templates' component={Templates} />
                 <Route path='/templates/:showHeader' component={Templates} />
