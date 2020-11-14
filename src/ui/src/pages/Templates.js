@@ -4,7 +4,12 @@ import { UserConsumer } from './../context';
 import { NavMenu } from './../components/NavMenu';
 import DesktopImage from '.././images/Background.jpg'
 import MobileImage from '.././images/Background.jpg'
-import teach from '.././images/teach.svg'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TableHead from '@material-ui/core/TableHead';
+import Link from '@material-ui/core/Link';
 import * as queries from './../graphql/queries';
 import * as mutations from './../graphql/mutations';
 
@@ -31,25 +36,33 @@ export class Templates extends Component {
 
   render() {
     return (
-      <UserConsumer>
-      {({ user,
-          updateState}) => (
-        <div className="App" style={{backgroundImage: `url(${MainImage})` }}>
-       {this.props.match.params.showHeader === "showHeader=false"
-        ? <div></div>
-        : <NavMenu/>}
-      <header className="App-header">
-        <img src={teach} className="App-logo" alt="logo" />
-        <p>
-          <code>Teach</code>
-        </p>
-      </header>
+        <div className="App">
+          {this.props.match.params.showHeader === "showHeader=false"
+          ? <div></div>
+          : <NavMenu/>}
+              <Table>
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>Template</TableCell>
+                          <TableCell>Description</TableCell>
+                          <TableCell>Link</TableCell>                       
+                      </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      <TableRow key="slide">
+                          <TableCell>DOJO Google Slide</TableCell>
+                          <TableCell>For making your own lesson</TableCell>
+                          <TableCell>
+                            <Link href="https://docs.google.com/presentation/d/1OGUo7jK5R2FC9em5uoohuzjcKmGzewNnolhrZnqzgjk/edit?usp=sharing">
+                              Download Slide Tempate
+                            </Link>
+                        </TableCell>
+                      </TableRow>
+                  </TableBody>
+                </Table>
         </div>
       )}               
-      </UserConsumer> 
-            );
-        }
-    }
+   }
     
     
   export default Templates;

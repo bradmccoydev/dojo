@@ -22,7 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy": "yarn build && aws s3 sync build/ s3://dojo.bradmccoy.io --acl public-read --profile bradmccoy.io",
+    "deploy": "yarn build && aws s3 sync build/ s3://dojo.bradmccoy.io --acl public-read --profile bradmccoy.io && aws cloudfront create-invalidation --distribution-id E19FP0YOP4IHTR --paths \"/*\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
