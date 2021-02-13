@@ -14,6 +14,7 @@ import { Feedback } from './../pages/docs/Feedback';
 import { PrivacyPolicy } from './../pages/docs/PrivacyPolicy';
 import { Copyright } from './../pages/docs/Copyright';
 import { Support } from './../pages/docs/Support';
+import { Blog } from "./Slider";
 import ReactGA from 'react-ga';
 import { UserProvider } from './../context';
 import { ThemeProvider } from '@material-ui/core/styles'

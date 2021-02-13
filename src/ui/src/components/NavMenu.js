@@ -86,6 +86,13 @@ export class NavMenu extends Component {
             component={Link} to="/templates?showheader=true">                                  
             Templates                     
           </IconButton>
+          <IconButton
+            style={{gutterBottom: true}}
+            color="inherit"
+            aria-label="Menu"
+            component={Link} to="/blog?showheader=true">                                  
+            Blog                     
+          </IconButton>
           <IconButton>
             <AmplifySignOut />   
           </IconButton>
